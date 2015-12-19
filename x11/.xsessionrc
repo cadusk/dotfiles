@@ -1,0 +1,13 @@
+#!/bin/sh
+
+xset s off
+xset r rate 250 30
+xset dpms 300 600 900
+
+xmodmap ${HOME}/.Xmodmap
+
+setxkbmap -option ctrl:swapcaps
+xrdb -merge ~/.Xresources
+# xscreensaver -no-splash &
+
+# exec /usr/bin/openbox-session

@@ -1,0 +1,8 @@
+authorized_keys
+id_rsa*
+
+caches/
+backups/
+*.swp
+*.pyc
+
