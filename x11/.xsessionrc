@@ -6,8 +6,7 @@ xset dpms 300 600 900
 
 xmodmap ${HOME}/.Xmodmap
 
-setxkbmap -option ctrl:swapcaps
-xrdb -merge ~/.Xresources
-# xscreensaver -no-splash &
+setxkbmap -layout us -variant altgr-intl -option ctrl:swapcaps
 
-# exec /usr/bin/openbox-session
+xrdb -merge ~/.Xresources
+xscreensaver -no-splash &
