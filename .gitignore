@@ -1,4 +1,5 @@
-authorized_keys
+ssh/.ssh/authorized_keys
+ssh/.ssh/environment*
 id_rsa*
 
 caches/
