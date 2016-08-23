@@ -1,6 +1,6 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.15 for cadusk on Wed May  8 15:53:46 2013.
-# http://www.jwz.org/xscreensaver/
+# Written by xscreensaver-demo 5.35 for cardoc on Thu Aug 11 17:58:38 2016.
+# https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
 cycle:		0:10:00
@@ -17,8 +17,8 @@ demoCommand:	xscreensaver-demo
 prefsCommand:	xscreensaver-demo -prefs
 nice:		10
 memoryLimit:	0
-fade:		True
-unfade:		True
+fade:		False
+unfade:		False
 fadeSeconds:	0:00:02
 fadeTicks:	20
 captureStderr:	True
@@ -35,9 +35,9 @@ chooseRandomImages: False
 imageDirectory:	
 
 mode:		one
-selected:	145
+selected:	78
 
-textMode:	literal
+textMode:	url
 textLiteral:	XScreenSaver
 textFile:	
 textProgram:	fortune
@@ -244,6 +244,26 @@ programs:								      \
 - GL: 				companioncube -root			    \n\
 - GL: 				hilbert -root				    \n\
 - GL: 				tronbit -root				    \n\
+				electricsheep --root 1			    \n\
+- GL: 				dnalogo -root				    \n\
+  GL: 				geodesic -root				    \n\
+				hexadrop -root				    \n\
+  GL: 				kaleidocycle -root			    \n\
+  GL: 				quasicrystal -root			    \n\
+  GL: 				unknownpleasures -root			    \n\
+				binaryring -root			    \n\
+  GL: 				cityflow -root				    \n\
+  GL: 				geodesicgears -root			    \n\
+  GL: 				projectiveplane -root			    \n\
+  GL: 				romanboy -root				    \n\
+				tessellimage -root			    \n\
+  GL: 				winduprobot -root			    \n\
+  GL: 				splitflap -root				    \n\
+  GL: 				dymaxionmap -root			    \n\
+  GL: 				energystream -root			    \n\
+  GL: 				hydrostat -root				    \n\
+  GL: 				raverhoop -root				    \n\
+  GL: 				unicrud -root				    \n\
 
 
 pointerPollTime:    0:00:05
@@ -254,4 +274,5 @@ GetViewPortIsFullOfLies:False
 procInterrupts:	True
 xinputExtensionDev: False
 overlayStderr:	True
+authWarningSlack:   20
 
