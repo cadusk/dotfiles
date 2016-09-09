@@ -17,7 +17,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font -misc-fixed-medium-c-normal--12-120-75-75-C-70-iso10646-1
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -32,7 +32,6 @@ set $up l
 set $down k
 set $left j
 set $right semicolon
-set $externaldisplay HDMI-1
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -44,7 +43,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+space exec dmenu_run
+bindsym $mod+space exec rofi -show run -fullscreen -hide-scrollbar -glob -location 0 -lines 10 -bw 0 -font "Hack 16" -padding 50 -separator-style dash -opacity 80
 
 # change focus
 bindsym $mod+$left focus left
@@ -87,9 +87,6 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
 # focus the parent container
 bindsym $mod+a focus parent
 
@@ -103,44 +100,40 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-set $wks_work "1:Work"
-set $wks_web "2:Web"
-set $wks_mail "3:"
+set $workspace1 "1:"
+set $workspace2 "2:web"
+set $workspace3 "3:"
 set $workspace4 "4:"
-set $wks_chat "5:"
-set $wks_office "6:Office"
+set $workspace5 "5:"
+set $workspace6 "6:"
 set $workspace7 "7:"
-set $wks_virtual "8:VirtualBox"
-set $wks_vmware "9:VMWare"
-set $wks_music "10:Music"
-
-workspace $wks_mail output $externaldisplay
-workspace $wks_chat output $externaldisplay
-workspace $wks_music output $externaldisplay
+set $workspace8 "8:vbox"
+set $workspace9 "9:vmware"
+set $workspace10 "10:"
 
 # switch to workspace
-bindsym $mod+1 workspace $wks_work
-bindsym $mod+2 workspace $wks_web
-bindsym $mod+3 workspace $wks_mail
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace $wks_chat
-bindsym $mod+6 workspace $wks_office
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
 bindsym $mod+7 workspace $workspace7
-bindsym $mod+8 workspace $wks_virtual
-bindsym $mod+9 workspace $wks_vmware
-bindsym $mod+0 workspace $wks_music
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $wks_work
-bindsym $mod+Shift+2 move container to workspace $wks_web
-bindsym $mod+Shift+3 move container to workspace $wks_mail
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
 bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace $wks_chat
-bindsym $mod+Shift+6 move container to workspace $wks_office
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
 bindsym $mod+Shift+7 move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $wks_virtual
-bindsym $mod+Shift+9 move container to workspace $wks_vmware
-bindsym $mod+Shift+0 move container to workspace $wks_music
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # move focused workspace to output
 bindsym $mod+Ctrl+Shift+$up    move workspace to output up
@@ -148,6 +141,8 @@ bindsym $mod+Ctrl+Shift+$down  move workspace to output down
 bindsym $mod+Ctrl+Shift+$left  move workspace to output left
 bindsym $mod+Ctrl+Shift+$right move workspace to output right
 
+# refresh wallpaper
+bindsym $mod+b exec ~/.fehbg
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -162,15 +157,17 @@ bindsym $mod+Print exec "sleep 0.2; scrot -q 100 -s '/home/cardoc/pictures/scree
 # Screenshot current focused window
 bindsym Shift+Print exec "scrot -q 100 -u '/home/cardoc/pictures/screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png'"
 
-# audio controls
-bindsym XF86AudioRaiseVolume exec amixer set Master 5+ #increase sound volume
-bindsym XF86AudioLowerVolume exec amixer set Master 5- #decrease sound volume
-bindsym XF86AudioMute exec amixer set Master 1+ toggle # mute sound
-bindsym XF86AudioMicMute exec amixer set Capture toggle # mute mic
+# fn mappings
+bindsym XF86AudioRaiseVolume exec amixer set Master 2550+
+bindsym XF86AudioLowerVolume exec amixer set Master 2550-
+bindsym XF86AudioMute exec amixer set Master 1+ toggle
+bindsym XF86AudioMicMute exec amixer set Capture toggle
+bindsym XF86TouchpadToggle exec toggletouchpad.sh
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 bindsym $mod+Shift+x exec xscreensaver-command -lock
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 -steps 1
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 -steps 1
+bindsym $mod+d exec hotplug_monitor.sh
 
 for_window [class="^Spotify$"] border none
 for_window [class="^Spotify Premium$"] border none
@@ -185,10 +182,15 @@ for_window [class="Steam"] floating enable
 for_window [class="VirtualBox"] floating enable
 for_window [class="vlc"] floating enable
 
-assign [class="Firefox"] $wks_web
-assign [class="libreoffice"] $wks_office
-assign [class="VirtualBox"] $wks_virtual
-assign [class="Vmware-view"] $wks_vmware
+assign [class="Firefox"] $workspace2
+assign [class="libreoffice"] $workspace6
+assign [class="VirtualBox"] $workspace8
+assign [class="Vmware-view"] $workspace9
+
+set $builtindisplay eDP-1
+set $externaldisplay HDMI-1
+
+workspace $workspace9 output $externaldisplay
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -216,17 +218,18 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    font pango:monospace 8
+    font pango:Hack 8
     status_command i3status --config ~/.config/i3/status.conf
+
+    workspace_buttons yes
+    position bottom
+    tray_output primary
+    mode dock
 }
 
 exec_always --no-startup-id ~/.fehbg
 
-# exec nm-applet
-# exec pidgin
 # exec firefox
-# exec thunderbird

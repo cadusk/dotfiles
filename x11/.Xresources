@@ -36,3 +36,12 @@ xscreensaver.Dialog.shadowThickness:    2
 xscreensaver.passwd.thermometer.foreground:  #101010
 xscreensaver.passwd.thermometer.background:  #2E2E2E
 xscreensaver.passwd.thermometer.width:       8
+
+! rofi theme -----------------------------------------------------------------
+rofi.color-enabled:    true
+rofi.color-normal:     argb:00000000,  #D8DEE9 , argb:00000000,  #FAC863 ,  #000000
+rofi.color-urgent:     argb:00000000,  #F99157 , argb:00000000,  #F99157 ,  #000000
+rofi.color-active:     argb:00000000,  #000000 , argb:00000000,  #000000 ,  #000000
+rofi.color-window:     argb:ee222222,  #FAC863 ,  #FAC863
+rofi.separator-style:  dash
+
