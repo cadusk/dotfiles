@@ -6,12 +6,12 @@ export BUILTIN="eDP-1"
 export EXTERNAL="HDMI-1"
 
 connect() {
-    xrandr --output ${EXTERNAL} --above ${BUILTIN} --preferred --primary --output ${BUILTIN} --preferred
+    xrandr -d $DISPLAY --output ${EXTERNAL} --above ${BUILTIN} --preferred --primary --output ${BUILTIN} --preferred
 }
 
 disconnect() {
-    xrandr --output ${BUILTIN} --auto
-    xrandr --output ${EXTERNAL} --off
+    xrandr -d $DISPLAY --output ${BUILTIN} --auto
+    xrandr -d $DISPLAY --output ${EXTERNAL} --off
 }
 
 xrandr | grep "${EXTERNAL} connected" &> /dev/null && connect || disconnect

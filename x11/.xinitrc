@@ -28,9 +28,7 @@ xset +fp /usr/share/fonts/local
 xset fp rehash &
 xsetroot -cursor_name left_ptr &
 
-#exec xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
 exec compton -cCG &
 exec unclutter -idle 5 -jitter 25 -root &
-exec pulseaudio --start &
 exec xscreensaver -no-splash &
 exec i3
