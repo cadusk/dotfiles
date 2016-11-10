@@ -183,7 +183,8 @@ for_window [class="VirtualBox"] floating enable
 for_window [class="vlc"] floating enable
 
 assign [class="Firefox"] $workspace2
-assign [class="libreoffice"] $workspace6
+assign [title="^Slack"] $workspace3
+assign [title="LibreOffice"] $workspace6
 assign [class="VirtualBox"] $workspace8
 assign [class="Vmware-view"] $workspace9
 

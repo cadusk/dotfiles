@@ -24,8 +24,6 @@ fi
 xhost local:host
 
 xset -b &
-xset +fp /usr/share/fonts/local
-xset fp rehash &
 xsetroot -cursor_name left_ptr &
 
 exec compton -cCG &
