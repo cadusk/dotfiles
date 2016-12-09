@@ -23,6 +23,7 @@
     dt = difftool -C -y
     h = log --all --graph --decorate --oneline --simplify-by-decoration
     l = log --all --graph --decorate --oneline -10
+    fa = fetch --all
     st = status -uall
     su = submodule update --init
     tags = tag -l
@@ -48,8 +49,8 @@
 [color "diff"]
     meta = yellow bold
     frag = magenta bold
-    old = red bold
-    new = green bold
+    old = red bold strike
+    new = green bold italic
 
 [color "status"]
     added = bold white
