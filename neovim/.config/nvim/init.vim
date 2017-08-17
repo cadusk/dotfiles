@@ -1,114 +1,122 @@
-set nocompatible
+" NeoBundle scripts --------------------------------
+if has('vim_starting')
+	set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
+	set runtimepath+=~/.config/nvim/
+endif
 
-call plug#begin('~/.config/nvim/plugged')
+let neobundle_readme=expand('~/.config/nvim/bundle/neobundle.vim/README.md')
 
-Plug 'tpope/vim-fugitive'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-markdown'
-Plug 'kien/ctrlp.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'morhetz/gruvbox'
+if !filereadable(neobundle_readme)
+	echo "Installing NeoBundle..."
+	echo ""
+	silent !mkdir -p ~/.config/nvim/bundle
+	silent !git clone https://github.com/Shougo/neobundle.vim ~/.config/nvim/bundle/neobundle.vim
+	let g:not_finish_neobundle = "yes"
+endif
 
-call plug#end()
+call neobundle#begin(expand('$HOME/.config/nvim/bundle'))
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-set showcmd             " Show (partial) command in status line.
-set showmatch           " Show matching brackets.
-set showmode            " Show current mode.
-set ruler               " Show the line and column numbers of the cursor.
-set number              " Show the line numbers on the left side.
-set formatoptions+=o    " Continue comment marker in new lines.
-set textwidth=0         " Hard-wrap long lines as you type them.
-set expandtab           " Insert spaces when TAB is pressed.
-set tabstop=2           " Render TABs using this many spaces.
-set shiftwidth=2        " Indentation amount for < and > commands.
+NeoBundle 'morhetz/gruvbox'
+NeoBundle 'tpope/vim-sensible'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tomtom/tcomment_vim'
+"
+" CtrlP configuration -------------------------------
+let g:ctrlp_map = '<leader>e'
+let g:ctrlp_cmd = 'CtrlPCurWD'
+let g:ctrlp_tabpage_position = 'ac'
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_custom_ignore = {
+	\ 'files': '\.py[oc]$',
+	\ 'venvs': '\v[\/]venv$',
+	\ 'rcs': '\v[\/]\.(git|hg|svn|vs)$'
+	\ }
 
+NeoBundle 'vim-scripts/ctrlp.vim'
+
+call neobundle#end()
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+" End NeoBundle scripts --------------------------------
+
+" environment directory setup
+silent execute '!mkdir -p ~/.config/nvim/tmp/{view,undo}'
 set nobackup
 set noswapfile
+set viewdir=$HOME/.config/nvim/tmp/view/
+set undodir=$HOME/.config/nvim/tmp/undo/
 set undofile
-set hidden
+set viminfo='50,n$HOME/.config/nvim/tmp/viminfo
 
-set termencoding=utf-8
-set encoding=utf-8
+" editing
+set hidden
 set textwidth=79
 set wrapmargin=80
-set colorcolumn=80
-set formatoptions=qrn1
+set formatoptions-=o
 set diffopt+=iwhite,vertical
-set shortmess+=afilmnrxoOtT
+set visualbell
+set number
+set noerrorbells
+set cursorline
+set colorcolumn=80
+set showtabline=2
+set showcmd
+set showmatch
+set noshowmode
+set modeline
 set viewoptions=folds,options,cursor,unix,slash
-let &showbreak='++ '
+set splitright splitbelow
+set mouse-=a
+let &showbreak = '++ '
 
-set noerrorbells        " No beeps.
-set modeline            " Enable modeline.
-set esckeys             " Cursor keys in insert mode.
-set linespace=0         " Set line-spacing to minimum.
-set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
+" searching
+set hlsearch
+set ignorecase
+set smartcase
 
-set notimeout
-set ttimeout
-set ttimeoutlen=10
-set ttyfast
-set lazyredraw
-
-" More natural splits
-set splitbelow          " Horizontal split below current.
-set splitright          " Vertical split to right of current.
-
-if !&scrolloff
-  set scrolloff=3       " Show next 3 lines while scrolling.
-endif
-if !&sidescrolloff
-  set sidescrolloff=5   " Show next 5 columns while side-scrolling.
-endif
-
-set display+=lastline
-set nostartofline       " Do not jump to first character with page commands.
-
-let mapleader=','
-let g:mapleader=','
-
-" Tell Vim which characters to show for expanded TABs,
-" trailing whitespace, and end-of-lines. VERY useful!
-if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-endif
-set list                " Show problematic characters.
-
-" Also highlight all tabs and trailing whitespace characters.
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-match ExtraWhitespace /\s\+$\|\t/
-
-set hlsearch            " Highlight search results.
-set ignorecase          " Make searching case insensitive
-set smartcase           " ... unless the query has capital letters.
-set incsearch           " Incremental search.
-set gdefault            " Use 'g' flag by default with :s/foo/bar/.
-set magic               " Use 'magic' patterns (extended regular expressions).
-
+" lists and menus
 set wildmode=list:longest,full
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~
-set wildignore+=*/tmp/*,*/venv/*,*.pyc,*.pyo,*.sqlite3
+set wildignore+=*/tmp/,*/venv/*,*/.pyc,*.pyo,*~
 set suffixes+=*.pyc,*.pyo,*~
 
-" Use <C-L> to clear the highlighting of :set hlsearch.
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+" formatting
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set pastetoggle=<F2>
+
+" time out on key codes but no mappings
+" this makes terminal vim work sanely
+set notimeout
+if !has('nvim') && &ttimeoutlen == -1
+    set ttimeout
+    set ttimeoutlen=100
 endif
 
-" Search and Replace
-nmap <Leader>s :%s//g<Left><Left>
+" visuals
+set background=dark
+colorscheme gruvbox
 
-" visual shifting (does not exit Visual mode)
+" mappings
+let mapleader=','
+
+" visual shifting
 vnoremap < <gv
-vnoremap > >gv 
+vnoremap > >gv
 
-" navigate over wrapped lines as if they were separeted lines
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
+" navigate over wrapped lines as if they were separated lines
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 " there are other vim ways of moving around
 nnoremap <PageUp> <NOP>
@@ -132,13 +140,13 @@ vnoremap <RIGHT> <NOP>
 
 " split current window
 nnoremap <leader>v <C-w>v
-nnoremap <leader>h <C-w>s
+nnoremap <leader>h <C-w>h
 
 " split resizing
-nnoremap <C-S-Left> <c-w><
-nnoremap <C-S-Right> <c-w>>
-nnoremap <C-S-Up> <c-w>-
-nnoremap <C-S-Down> <c-w>+
+nnoremap <C-S-Left> <C-w><
+nnoremap <C-S-Right> <C-w>>
+nnoremap <C-S-Up> <C-w>-
+nnoremap <C-S-Down> <C-w>+
 
 " split navigation
 nnoremap <C-h> <C-w>h
@@ -146,63 +154,28 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Expand/Collapse foldings using space
+" expand/collapse foldings using space
 nnoremap <space> za
 
-vnoremap <leader>s :sort<cr> "sort selection lines
-nnoremap <leader>/ :noh<cr> " clear out search highlights
-nnoremap <leader>a :let &scrolloff=999-&scrolloff<cr> " toggle 'keep current line in the center of the screen' mode
+" util commands
+vnoremap <leader>s :sort<CR>    " sort selected lines
+nnoremap <leader>/ :noh<CR>     " clear out search highlights
+nnoremap <leader>a :let &scrolloff=999-&scrolloff<CR>   " toggles mode to keep current line in the center of the screen
+
+" buffer listing using CtrlP plugin
+nnoremap <leader>t :CtrlPBuffer<CR>
 
 " underline current line
 nnoremap <leader>= yypVr=
 nnoremap <leader>- yypVr-
 
-" clean trailing whitespace
-nnoremap <leader>x mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+" clear trailing whitespaces
+nnoremap <leader>x mz:%s/\s\+$//<CR>:let @/=''<CR>`z
 
 " hardwrap text paragraphs
 nnoremap <leader>q gqip
 
-" select just pasted text
+" reselect just pasted text
 nnoremap <leader>V V`]
 
-" folding
-set foldmethod=marker
-set foldlevel=1
-set foldnestmax=2
 
-function! MyFoldText() " {{{
-    let line = getline(v:foldstart)
-
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
-
-    " expand tabs into spaces
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
-
-    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-endfunction " }}}
-set foldtext=MyFoldText()
-
-" --------------- CtrlP --------------
-" Open file menu
-nnoremap <Leader>o :CtrlP<CR>
-" Open buffer menu
-nnoremap <Leader>b :CtrlPBuffer<CR>
-" Open most recently used files
-nnoremap <Leader>f :CtrlPMRUFiles<CR>
-let g:ctrlp_custom_ignore='\v[\/]\.(git|hg|svn|venv)$'
-
-set background=dark
-let g:gruvbox_contrast_light=1
-colorscheme gruvbox
-
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
-
-syntax on
