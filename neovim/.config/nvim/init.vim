@@ -24,6 +24,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'fatih/vim-go'
 "
 " CtrlP configuration -------------------------------
 let g:ctrlp_map = '<leader>e'
