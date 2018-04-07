@@ -1,17 +1,7 @@
 #!/bin/sh
 
-export TERMINAL=$(which lxterminal)
+export TERMINAL=$(which urxvt)
 
-userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
-sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
-
-# merge in defaults and keymaps
-[ -f $sysresources ] && xrdb -merge $sysresources
-[ -f $sysmodmap ] && xmodmap $sysmodmap
-[ -f "$userresources" ] && xrdb -merge "$userresources"
-[ -f "$usermodmap" ] && xmodmap "$usermodmap"
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
@@ -20,13 +10,20 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+[ -f "$userresources" ] && xrdb -merge "$userresources"
+[ -f "$usermodmap" ] && xmodmap "$usermodmap"
+
 # run local xhost
 xhost local:host
 
-xset -b &
-xsetroot -cursor_name left_ptr &
+xset -b
+xset dpms 300
+xset r rate 200 20
+xsetroot -cursor_name left_ptr
+setxkbmap -option ctrl:swapcaps
 
-exec compton -cCG &
+exec compton -cCG --no-fading-openclose &
 exec unclutter -idle 5 -jitter 25 -root &
-exec xscreensaver -no-splash &
 exec i3

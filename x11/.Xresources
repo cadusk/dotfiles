@@ -1,11 +1,10 @@
 ! font settings --------------------------------------------------------------
 
-Xft.autohint: true
+Xft.autohint: false
 Xft.antialias: true
+Xft.dpi: 96
 Xft.hinting: true
 Xft.hintstyle: hintslight
-Xft.dpi: 100
-! Xft.dpi: 96
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
@@ -43,5 +42,68 @@ rofi.color-normal:     argb:00000000,  #D8DEE9 , argb:00000000,  #FAC863 ,  #000
 rofi.color-urgent:     argb:00000000,  #F99157 , argb:00000000,  #F99157 ,  #000000
 rofi.color-active:     argb:00000000,  #000000 , argb:00000000,  #000000 ,  #000000
 rofi.color-window:     argb:ee222222,  #FAC863 ,  #FAC863
-rofi.separator-style:  dash
+rofi.fuzzy:            false
+
+!!!!!!!!!
+! URxvt !
+!!!!!!!!!
+
+! Fonts
+URxvt.font: xft:Hack:size=11,style=medium
+URxvt.boldFont: xft:Hack:size=11,style=bold
+URxvt.italicFont: xft:Hack:size=11,style=bold
+URxvt.boldItalicFont: xft:Hack:size=11,style=bold
+URxvt.letterSpace: -1
+
+! UI
+URxvt*borderless: true
+!URxvt.internalBorder: 10
+URxvt*scrollBar: false
+URxvt*saveLines: 1000
+!URxvt*dynamicColors: true
+URxvt*termName: rxvt-unicode
+URxvt*fading: 10
+
+! Colors
+URxvt.depth: 32
+URxvt.intensityStyles: false
+
+! Extensions
+URxvt.perl-ext: default,url-select,clipboard
+URxvt.perl-ext-common: default,matcher
+
+! URxvt.keysym.Control-Alt-C: perl:clipboard:copy
+! #URxvt.keysym.Control-Alt-V: perl:clipboard:paste
+
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
+
+
+! === gruvbox color scheme ===
+*background: #1d2021
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
 
