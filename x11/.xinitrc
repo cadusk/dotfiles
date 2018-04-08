@@ -12,7 +12,7 @@ fi
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
-[ -f "$userresources" ] && xrdb -merge "$userresources"
+[ -f "$userresources" ] && xrdb -load "$userresources"
 [ -f "$usermodmap" ] && xmodmap "$usermodmap"
 
 # run local xhost
@@ -24,6 +24,8 @@ xset r rate 200 20
 xsetroot -cursor_name left_ptr
 setxkbmap -option ctrl:swapcaps
 
+exec dunst &
+exec xss-lock -- ~/.config/i3lock/i3lock.sh &
 exec compton -cCG --no-fading-openclose &
 exec unclutter -idle 5 -jitter 25 -root &
 exec i3

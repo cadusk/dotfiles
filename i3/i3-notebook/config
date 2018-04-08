@@ -20,10 +20,10 @@ set $locker ~/.config/i3lock/i3lock.sh
 font pango:Hack, FontAwesome 9
 
 # >> Gaps
-gaps inner 5
-smart_gaps on
-new_window pixel 2
-new_float pixel 2
+# gaps inner 5
+# smart_gaps on
+# new_window pixel 2
+# new_float pixel 2
 
 force_display_urgency_hint 0 ms
 focus_on_window_activation urgent
@@ -205,6 +205,4 @@ bar {
 }
 
 # start up commands
-exec --no-startup-id dunst &
-exec --no-startup-id xss-lock -- $locker &
 exec_always --no-startup-id ~/.fehbg
