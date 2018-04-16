@@ -134,7 +134,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Screenshot fullscreen
-bindsym --release Print exec --no-startup-id "scrot -q 100 $HOME/Pictures/screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png"
+bindsym --release Print exec --no-startup-id "scrot -q 100 $HOME/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png"
 
 # fn mappings
 bindsym XF86AudioRaiseVolume exec amixer set Master 2550+
