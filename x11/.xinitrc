@@ -20,9 +20,10 @@ xhost local:host
 
 xset -b
 xset dpms 300
-xset r rate 200 20
+xset r rate 400 20
 xsetroot -cursor_name left_ptr
-setxkbmap -option ctrl:swapcaps
+setxkbmap -model pc105 -layout us,us -variant ,intl
+setxkbmap -option ctrl:nocaps -option grp:shifts_toggle
 
 exec dunst &
 exec xss-lock -- ~/.config/i3lock/i3lock.sh &

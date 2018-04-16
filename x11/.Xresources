@@ -7,33 +7,6 @@ Xft.hintstyle: hintslight
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
-! xscreensaver ---------------------------------------------------------------
-!font settings
-xscreensaver.Dialog.headingFont:        -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
-xscreensaver.Dialog.bodyFont:           -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
-xscreensaver.Dialog.labelFont:          -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
-xscreensaver.Dialog.unameFont:          -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
-xscreensaver.Dialog.buttonFont:         -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
-xscreensaver.Dialog.dateFont:           -*-fixed-medium-r-*-*-12-*-*-*-*-*-*-*
-xscreensaver.passwd.passwdFont:         -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
-!general dialog box (affects main hostname, username, password text)
-xscreensaver.Dialog.foreground:         #101010
-xscreensaver.Dialog.background:         #D8D8D8
-xscreensaver.Dialog.topShadowColor:     #D8D8D8
-xscreensaver.Dialog.bottomShadowColor:  #D8D8D8
-xscreensaver.Dialog.Button.foreground:  #101010
-xscreensaver.Dialog.Button.background:  #E5E5E5
-!username/password input box and date text colour
-xscreensaver.Dialog.text.foreground:    #101010
-xscreensaver.Dialog.text.background:    #E5E5E5
-xscreensaver.Dialog.internalBorderWidth:24
-xscreensaver.Dialog.borderWidth:        0
-xscreensaver.Dialog.shadowThickness:    2
-!timeout bar (background is actually determined by Dialog.text.background)
-xscreensaver.passwd.thermometer.foreground:  #101010
-xscreensaver.passwd.thermometer.background:  #2E2E2E
-xscreensaver.passwd.thermometer.width:       8
-
 ! rofi theme -----------------------------------------------------------------
 rofi.color-enabled:    true
 rofi.color-normal:     argb:00000000,  #D8DEE9 , argb:00000000,  #FAC863 ,  #000000
@@ -71,7 +44,7 @@ URxvt.perl-ext: default,url-select,clipboard
 URxvt.perl-ext-common: default,matcher
 
 ! URxvt.keysym.Control-Alt-C: perl:clipboard:copy
-! #URxvt.keysym.Control-Alt-V: perl:clipboard:paste
+! URxvt.keysym.Control-Alt-V: perl:clipboard:paste
 
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
@@ -79,7 +52,7 @@ URxvt.matcher.button: 1
 ! Tartan theme from xcolors.net
 ! from http://www.xcolors.net/dl/tartan
 !urxvt color scheme:
-URxvt*background: #2B2B2B
+URxvt*background: #202020
 URxvt*foreground: #DEDEDE
 URxvt*colorUL: #86a2b0
 ! black

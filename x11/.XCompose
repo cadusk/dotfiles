@@ -1,0 +1,4 @@
+include "%L"
+
+<dead_acute> <c> : "ç" apostrophe
+<dead_acute> <C> : "Ç" apostrophe
