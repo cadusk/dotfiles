@@ -20,10 +20,10 @@ set $locker ~/.config/i3lock/i3lock.sh && sleep 1
 font pango:Hack, FontAwesome 9
 
 # >> Gaps
-# gaps inner 5
-# smart_gaps on
-# new_window pixel 2
-# new_float pixel 2
+gaps inner 5
+smart_gaps on
+new_window pixel 2
+new_float pixel 2
 
 force_display_urgency_hint 0 ms
 focus_on_window_activation urgent
@@ -81,11 +81,14 @@ bindsym $mod+Shift+a focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+Shift+plus scratchpad show 
-
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
+
+# Figure out how to work around this issue
+# for_window [instance="__scratchterm"] move scratchpad, sticky enable
+# bindsym $mod+Shift+o exec --no-startup-id $term -name __scratchterm
+# bindsym $mod+o [instance='__scratchterm'] scratchpad show
 
 set $workspace1  "1:"
 set $workspace2  "2:"
@@ -147,10 +150,11 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 2
 bindsym $mod+Control+l exec --no-startup-id $locker
 
 for_window [title="galculator"] floating enable
+for_window [title="Screen Layout Editor"] floating enable # arandr
 for_window [class="VirtualBox"] floating enable
 for_window [class="vlc"] floating enable
 for_window [title="Preferences$"] floating enable
-for_window [window_role="pop-up"] floating enable
+for_window [window_role="pop-up"] floating enable,move absolute center
 for_window [window_role="task_dialog"] floating enable
 for_window [instance="float"] floating enable
 for_window [title="^Volume Control$"] floating enable
@@ -200,7 +204,20 @@ bar {
     tray_output primary
     tray_padding 5
     workspace_buttons yes
+
+    colors {
+        statusline	#888888
+        background	#111111
+
+        # class             border      backgrd 	text
+        focused_workspace  #191919 		#191919 	#6b6b6b
+        active_workspace   #191919 		#191919 	#6b6b6b
+        inactive_workspace #191919 		#191919 	#423e32
+        urgent_workspace   #191919 		#191919 	#c7a551
+    }
 }
 
 # start up commands
 exec_always --no-startup-id ~/.fehbg
+exec --no-startup-id blueman-applet &
+exec --no-startup-id ~/.dropbox-dist/dropboxd &

@@ -49,34 +49,24 @@ URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
 
-! Tartan theme from xcolors.net
-! from http://www.xcolors.net/dl/tartan
-!urxvt color scheme:
-URxvt*background: #202020
-URxvt*foreground: #DEDEDE
-URxvt*colorUL: #86a2b0
-! black
-URxvt*color0  : #2E3436
-URxvt*color8  : #555753
-! red
-URxvt*color1  : #CC0000
-URxvt*color9  : #EF2929
-! green
-URxvt*color2  : #4E9A06
-URxvt*color10 : #8AE234
-! yellow
-URxvt*color3  : #C4A000
-URxvt*color11 : #FCE94F
-! blue
-URxvt*color4  : #3465A4
-URxvt*color12 : #729FCF
-! magenta
-URxvt*color5  : #75507B
-URxvt*color13 : #AD7FA8
-! cyan
-URxvt*color6  : #06989A
-URxvt*color14 : #34E2E2
-! white
-URxvt*color7  : #D3D7CF
-URxvt*color15 : #EEEEEC
-
+! Plastic-Toys theme from xcolors.net
+! from http://www.xcolors.net/dl/plastic-toys
+URxvt*.foreground:   #ebebeb
+URxvt*.background:   #222222
+URxvt*.cursorColor:  #ebebeb
+URxvt*.color0:       #222222
+URxvt*.color8:       #111111
+URxvt*.color1:       #eb0000
+URxvt*.color9:       #ab0000
+URxvt*.color2:       #aaeb00
+URxvt*.color10:      #66aa00
+URxvt*.color3:       #eebb00
+URxvt*.color11:      #aa7700
+URxvt*.color4:       #00aaeb
+URxvt*.color12:      #0066aa
+URxvt*.color5:       #ebaaeb
+URxvt*.color13:      #aa66aa
+URxvt*.color6:       #00ebeb
+URxvt*.color14:      #00aaaa
+URxvt*.color7:       #ebebeb
+URxvt*.color15:      #fafafa
