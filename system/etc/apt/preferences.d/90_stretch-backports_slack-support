@@ -1,0 +1,3 @@
+Package: gconf2* libgconf* gconf-service libgconf* libindicator*
+Pin: release n=stretch-backports
+Pin-Priority: 1000

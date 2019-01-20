@@ -1,0 +1,4 @@
+Package: linux-image-amd64 linux-image-* linux-headers-amd64 linux-headers-* linux-kbuild-* linux-compiler-gcc-6-x86 \
+	 acpi-call-dkms firmware-iwlwifi intel-microcode \
+Pin: release n=stretch-backports
+Pin-Priority: 1000
