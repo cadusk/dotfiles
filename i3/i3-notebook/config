@@ -19,12 +19,8 @@ set $locker ~/.config/i3lock/i3lock.sh && sleep 1
 # is used in the bar {} block below.
 font pango:Hack, FontAwesome 9
 
-# >> Gaps
-gaps inner 5
-smart_gaps on
 new_window pixel 2
 new_float pixel 2
-
 force_display_urgency_hint 0 ms
 focus_on_window_activation urgent
 
@@ -139,13 +135,13 @@ bindsym $mod+Shift+r restart
 # Screenshot fullscreen
 bindsym --release Print exec --no-startup-id "scrot -q 100 $HOME/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png"
 
-# fn mappings
-bindsym XF86AudioRaiseVolume exec amixer set Master 2550+
-bindsym XF86AudioLowerVolume exec amixer set Master 2550-
-bindsym XF86AudioMute exec amixer set Master 1+ toggle
-bindsym XF86AudioMicMute exec amixer set Capture toggle
-bindsym XF86MonBrightnessUp exec xbacklight -inc 2
-bindsym XF86MonBrightnessDown exec xbacklight -dec 2
+# fn mappings - check pavucontrol or pactl list for sink/source ids
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute 1 toggle
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 bindsym $mod+Control+l exec --no-startup-id $locker
 
@@ -198,7 +194,7 @@ bindsym $mod+x mode "$mode_display"
 bar {
     status_command i3status --config ~/.config/i3/status.conf
 
-    font pango:Hack, FontAwesome 10
+    font pango:Hack, FontAwesome 9
     position top
     strip_workspace_numbers yes
     tray_output primary
