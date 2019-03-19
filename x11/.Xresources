@@ -20,10 +20,10 @@ rofi.fuzzy:            false
 !!!!!!!!!
 
 ! Fonts
-URxvt.font: xft:Inconsolata:size=11,style=medium
-URxvt.boldFont: xft:Inconsolata:size=11,style=bold
-URxvt.italicFont: xft:Inconsolata:size=11,style=bold
-URxvt.boldItalicFont: xft:Inconsolata:size=11,style=bold
+URxvt.font: xft:Hack:size=11,style=medium
+URxvt.boldFont: xft:Hack:size=11,style=bold
+URxvt.italicFont: xft:Hack:size=11,style=bold
+URxvt.boldItalicFont: xft:Hack:size=11,style=bold
 URxvt.letterSpace: -1
 
 ! UI
