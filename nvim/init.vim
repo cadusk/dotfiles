@@ -17,31 +17,31 @@ endif
 call neobundle#begin(expand('$HOME/.config/nvim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'morhetz/gruvbox'
-NeoBundle 'tpope/vim-sensible'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-markdown'
+NeoBundle 'arcticicestudio/nord-vim'
+NeoBundle 'andreypopp/vim-colors-plain'
+" NeoBundle 'tpope/vim-fugitive'
+" NeoBundle 'tpope/vim-surround'
+" NeoBundle 'tpope/vim-markdown'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'fatih/vim-go'
+" NeoBundle 'fatih/vim-go'
 "
-" CtrlP configuration -------------------------------
-let g:ctrlp_map = '<leader>e'
-let g:ctrlp_cmd = 'CtrlPCurWD'
-let g:ctrlp_tabpage_position = 'ac'
-let g:ctrlp_dotfiles = 0
-let g:ctrlp_custom_ignore = {
-	\ 'files': '\.py[oc]$',
-	\ 'venvs': '\v[\/]venv$',
-	\ 'rcs': '\v[\/]\.(git|hg|svn|vs)$'
-	\ }
-
-NeoBundle 'vim-scripts/ctrlp.vim'
+" " CtrlP configuration -------------------------------
+" let g:ctrlp_map = '<leader>e'
+" let g:ctrlp_cmd = 'CtrlPCurWD'
+" let g:ctrlp_tabpage_position = 'ac'
+" let g:ctrlp_dotfiles = 0
+" let g:ctrlp_custom_ignore = {
+" 	\ 'files': '\.py[oc]$',
+" 	\ 'venvs': '\v[\/]venv$',
+" 	\ 'rcs': '\v[\/]\.(git|hg|svn|vs)$'
+" 	\ }
+" 
+" NeoBundle 'vim-scripts/ctrlp.vim'
 
 call neobundle#end()
 filetype plugin indent on
-
+ 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
@@ -60,21 +60,24 @@ set viminfo='50,n$HOME/.config/nvim/tmp/viminfo
 set hidden
 set textwidth=79
 set wrapmargin=80
-set formatoptions-=o
 set diffopt+=iwhite,vertical
 set visualbell
 set number
+set relativenumber
 set noerrorbells
 set cursorline
-set colorcolumn=80
-set showtabline=2
 set showcmd
 set showmatch
-set noshowmode
-set modeline
-set viewoptions=folds,options,cursor,unix,slash
-set splitright splitbelow
+set laststatus=2
+set formatoptions-=o
+set viewoptions-=options
+set sessionoptions-=options
+set splitbelow splitright 
 set mouse-=a
+
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
 let &showbreak = '++ '
 
 " searching
@@ -83,12 +86,14 @@ set ignorecase
 set smartcase
 
 " lists and menus
+set wildmenu
 set wildmode=list:longest,full
 set wildignore+=*/tmp/,*/venv/*,*/.pyc,*.pyo,*~
 set suffixes+=*.pyc,*.pyo,*~
 
 " formatting
 set expandtab
+set smarttab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -103,8 +108,10 @@ if !has('nvim') && &ttimeoutlen == -1
 endif
 
 " visuals
+set termguicolors
 set background=dark
-colorscheme gruvbox
+let g:lightline = {'colorscheme': 'nord'}
+colorscheme nord
 
 " mappings
 let mapleader=','
@@ -164,7 +171,7 @@ nnoremap <leader>/ :noh<CR>     " clear out search highlights
 nnoremap <leader>a :let &scrolloff=999-&scrolloff<CR>   " toggles mode to keep current line in the center of the screen
 
 " buffer listing using CtrlP plugin
-nnoremap <leader>t :CtrlPBuffer<CR>
+" nnoremap <leader>t :CtrlPBuffer<CR>
 
 " underline current line
 nnoremap <leader>= yypVr=
@@ -176,7 +183,4 @@ nnoremap <leader>x mz:%s/\s\+$//<CR>:let @/=''<CR>`z
 " hardwrap text paragraphs
 nnoremap <leader>q gqip
 
-" reselect just pasted text
-nnoremap <leader>V V`]
-
-
+" vim:set ft=vim et sw=2:
