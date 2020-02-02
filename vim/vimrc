@@ -1,0 +1,185 @@
+
+" figure out configuration folders for this system
+
+if has('nvim')
+  let myConfigDir=expand('$HOME/.config/nvim')
+else
+  let myConfigDir=expand('$HOME/.vim')
+endif
+
+
+" -------- Plug-in Management -------------------------------------
+
+" auto-install vim-plug
+let vim_plug_location = expand(myConfigDir . '/autoload/plug.vim')
+if !filereadable(vim_plug_location)
+  echo "Installing VimPlug..."
+  echo ""
+  silent execute '!curl -fLo ' . myConfigDir . '/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  let g:plug_just_installed = "yes"
+endif
+
+" minimalist plug-in management
+" if you don't know how to install, check out this page:
+" https://github.com/junegunn/vim-plug
+call plug#begin(expand(myConfigDir . '/plugged'))
+Plug 'tpope/vim-sensible'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'adelarsq/vim-matchit'
+Plug 'tomtom/tcomment_vim'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
+
+" ctrl-p configuration
+Plug 'kien/ctrlp.vim'
+let g:ctrlp_map = '<leader>e'
+let g:ctrlp_cmd = 'CtrlPCurWD'
+let g:ctrlp_tabpage_position = 'ac'
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_open_multiple_files = '2vjr'
+let g:ctrlp_custom_ignore = {
+    \ 'files': '\.py[co]$',
+    \ 'rcs': '\v[\/]\.(git|hg|svn|vs)$',
+    \ }
+
+" best theme: https://www.nordtheme.com/
+Plug 'arcticicestudio/nord-vim'
+Plug 'tomasr/molokai'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'Lokaltog/vim-distinguished'
+Plug 'fenetikm/falcon'
+Plug 'haishanh/night-owl.vim'
+Plug 'rakr/vim-one'
+call plug#end()
+
+if exists('g:plug_just_installed')
+  :PlugInstall!
+endif
+
+
+" -------- Envinronment -------------------------------------------
+
+silent execute '!mkdir -p ' . myConfigDir . '/tmp/{view,undo}'
+let &viewdir=expand(myConfigDir . '/tmp/view/')
+let &undodir=expand(myConfigDir . '/tmp/undo/')
+let &viminfofile=expand(myConfigDir . '/tmp/viminfo')
+set nobackup
+set noswapfile
+set undofile
+
+let mapleader=','
+
+" editing
+set hidden
+set textwidth=79
+set wrapmargin=80
+set diffopt+=iwhite,vertical
+set noerrorbells
+set cursorline
+set showcmd
+set showmatch
+set noshowmode
+set formatoptions-=o
+set mouse-=a
+set modeline
+
+set ignorecase
+set smartcase
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set splitbelow splitright
+
+" visuals
+set ruler
+set nonumber
+set relativenumber
+set hlsearch
+set wildmenu
+set wildmode=list:longest,full
+let &showbreak = '++ '
+
+if !has('nvim')
+  set ttimeout
+  set timeoutlen=10
+  set ttimeoutlen=100
+endif
+set notimeout
+set lazyredraw
+
+if !has('nvim')
+  set termguicolors
+  set t_Co=256
+endif
+set background=dark
+let g:lightline = {'colorscheme': 'falcon'}
+colorscheme falcon
+
+" -------- Mappings -----------------------------------------------
+
+" easy navigation of looong lines
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+
+" prevent entering ex mode accidentally
+nnoremap Q <nop>
+
+" disable <esc> to leave insert mode
+" other default options are <c-c> or <c-[>
+inoremap <esc> <nop>
+
+" visual block shifting
+vnoremap < <gv
+vnoremap > >gv
+
+" underline a line
+nnoremap g= yypVr=
+nnoremap g- yypVr-
+
+" last typed word to lowercase/uppercase
+inoremap <C-w>u <ESC>guawA
+inoremap <C-w>U <ESC>gUawA
+
+" split current window
+nnoremap <leader>v <C-w>v
+nnoremap <leader>h <C-w>h
+
+" move lines up and down in visual mode
+xnoremap <c-k> :move '<-2<CR>gv=gv
+xnoremap <c-j> :move '>+1<CR>gv=gv
+
+" zoom a vim pane
+nnoremap <leader>- :wincmd _<CR>:wincmd \|<CR>
+nnoremap <leader>= :wincmd =<CR>
+
+" split resizing
+nnoremap <C-S-Left> <C-w><
+nnoremap <C-S-Right> <C-w>>
+nnoremap <C-S-Up> <C-w>-
+nnoremap <C-S-Down> <C-w>+
+
+" split navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" life saving mappings
+vnoremap <leader>s :sort<CR>
+nnoremap <leader>/ :let @/=''<CR>
+nnoremap <leader>a :let &scrolloff=999-&scrolloff<CR>
+nnoremap <leader>q gqip
+
+" handle trailing spaces
+nnoremap <leader>x :FixWhitespace<CR>
+
+" disable arrow keys in normal mode
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
+" vim:set ft=vim et sw=2:
