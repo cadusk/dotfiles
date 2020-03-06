@@ -30,11 +30,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'godlygeek/tabular'
+Plug 'mattn/emmet-vim'
 
 " best theme: https://www.nordtheme.com/
+Plug 'qualiabyte/vim-colorstepper'
+Plug 'chriskempson/base16-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'fenetikm/falcon'
-Plug 'haishanh/night-owl.vim'
 call plug#end()
 
 if exists('g:plug_just_installed')
@@ -71,9 +73,9 @@ set modeline
 set ignorecase
 set smartcase
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set splitbelow splitright
 
 " visuals
@@ -83,6 +85,9 @@ set relativenumber
 set hlsearch
 set wildmenu
 set wildmode=list:longest,full
+set wildignore+=*/.git/**,*/.hg/**,*/.svn/**
+set wildignore+=*/__pycache__/*,*/*.pyc,*/*.pyo
+set wildignore+=*/node_modules/**
 let &showbreak = '++ '
 
 if !has('nvim')
@@ -94,9 +99,9 @@ set notimeout
 set lazyredraw
 
 if !has('nvim')
-  set termguicolors
   set t_Co=256
 endif
+set termguicolors
 set background=dark
 let g:lightline = {'colorscheme': 'falcon'}
 colorscheme falcon
