@@ -113,7 +113,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
 call plug#end()
 
 if exists('g:plug_just_installed')

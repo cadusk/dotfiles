@@ -8,4 +8,4 @@ set background=dark
 set termguicolors
 let g:lightline = {'colorscheme': 'gruvbox'}
 
-colorscheme gruvbox-material
+colorscheme gruvbox
