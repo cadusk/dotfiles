@@ -1,4 +1,3 @@
-
 set nobackup                          " disable backup files
 set noswapfile                        " disable swap files
 set undofile                          " disable undo files
@@ -13,8 +12,8 @@ if exists('+colorcolumn')
 endif
 
 set cursorline                        " highlight current line
-set diffopt+=foldcolumn:0             " don't show fold column in diff view
-set diffopt+=iwhite,vertical
+" set diffopt+=foldcolumn:0             " don't show fold column in diff view
+" set diffopt+=iwhite,vertical
 
 set noemoji                           " don't assume all emoji are double width
 set expandtab                         " always use spaces instead of tabs
@@ -45,19 +44,19 @@ if has('linebreak')
   let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
 endif
 
-set list                              " show whitespace
-set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
-set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
-                                      " + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
-set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
-set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
-set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
+set list
+set listchars=nbsp:␣
+set listchars+=tab:→\ 
+set listchars+=extends:»
+set listchars+=precedes:«
+set listchars+=trail:•
 
 set number                            " show line numbers in gutter
 if exists('+relativenumber')
   set relativenumber                  " show relative numbers in gutter
 endif
 
+set noshowmode                        " don't show insert/normal/cmd mode. this is going to be taken care by lightline
 set modeline
 set modelines=5                       " scan this many lines looking for modeline
 set nojoinspaces                      " don't autoinsert two spaces after '.', '?', '!' for join command
@@ -88,10 +87,6 @@ endif
 
 if has('syntax')
   set synmaxcol=200                   " don't bother syntax highlighting long lines
-endif
-
-if has('termguicolors')
-  set termguicolors                   " use guifg/guibg instead of ctermfg/ctermbg in terminal
 endif
 
 set tabstop=2                         " spaces per tab
