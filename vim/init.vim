@@ -71,15 +71,15 @@ let g:undotree_DiffCommand='diff -u'
 let g:go_version_warning = 0
 let g:go_fmt_command = 'goimports'
 let g:go_fmt_autosave = 1
-let g:go_auto_sameids = 1
-let g:go_highlight_build_contraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
+let g:go_auto_sameids = 0
+let g:go_highlight_build_contraints = 0
+let g:go_highlight_extra_types = 0
+let g:go_highlight_fields = 0
+let g:go_highlight_functions = 0
+let g:go_highlight_methods = 0
+let g:go_highlight_operators = 0
+let g:go_highlight_structs = 0
+let g:go_highlight_types = 0
 
 " auto-install vim-plug
 let vim_plug_location = expand(myConfigDir . '/autoload/plug.vim')
