@@ -3,9 +3,6 @@
 " - https://github.com/wincent/wincent/tree/master/aspects/vim/files/.vim/
 " - https://dougblack.io/words/a-good-vimrc.html
 
-let mapleader=" "
-"let maplocalleader="\\ "
-
 " figure out configuration folders for this system
 if has('nvim')
   let myConfigDir=expand('$HOME/.config/nvim')
@@ -57,7 +54,7 @@ let g:fzf_branch_actions = {
       \ },
       \}
 
-let g:netrw_browse_split = 2
+let g:netrw_browse_split = 0
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_localrmdir='rm -r'
@@ -94,26 +91,27 @@ endif
 " if you don't know how to install, check out this page:
 " https://github.com/junegunn/vim-plug
 call plug#begin(expand(myConfigDir . '/plugged'))
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-endwise'
 Plug 'jiangmiao/auto-pairs'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tomtom/tcomment_vim'
 Plug 'adelarsq/vim-matchit'
+Plug 'mbbill/undotree'
 Plug 'godlygeek/tabular'
-Plug 'leshill/vim-json'
+Plug 'blueyed/vim-diminactive'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'leshill/vim-json'
 
-Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'blueyed/vim-diminactive'
 
 Plug 'itchyny/lightline.vim'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'gruvbox-community/gruvbox'
+Plug 'jonathanfilip/vim-lucius'
 call plug#end()
 
 if exists('g:plug_just_installed')

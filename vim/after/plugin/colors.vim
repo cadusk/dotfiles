@@ -8,4 +8,4 @@ set t_ut=
 set background=dark
 let g:lightline = {'colorscheme': 'gruvbox'}
 
-colorscheme gruvbox
+colorscheme lucius

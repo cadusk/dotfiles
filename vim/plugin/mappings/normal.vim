@@ -8,12 +8,6 @@ nnoremap gk k
 " prevent entering ex mode accidentally
 nnoremap Q <nop>
 
-" split resizing
-nnoremap <C-S-Left> <C-w><
-nnoremap <C-S-Right> <C-w>>
-nnoremap <C-S-Up> <C-w>-
-nnoremap <C-S-Down> <C-w>+
-
 " split navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

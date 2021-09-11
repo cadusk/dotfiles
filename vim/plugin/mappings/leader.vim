@@ -2,6 +2,9 @@
 " Leader mappings
 "
 
+let mapleader=" "
+"let maplocalleader="\\ "
+
 " open last buffer
 nnoremap <leader><leader> <C-^>
 
