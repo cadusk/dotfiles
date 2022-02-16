@@ -112,6 +112,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'jonathanfilip/vim-lucius'
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 if exists('g:plug_just_installed')

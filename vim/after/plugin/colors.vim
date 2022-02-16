@@ -6,6 +6,6 @@ endif
 set t_ut=
 
 set background=dark
-let g:lightline = {'colorscheme': 'gruvbox'}
+let g:lightline = {'colorscheme': 'nord'}
 
-colorscheme lucius
+colorscheme nord
