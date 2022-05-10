@@ -95,12 +95,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
 Plug 'jiangmiao/auto-pairs'
-Plug 'bronson/vim-trailing-whitespace'
 Plug 'tomtom/tcomment_vim'
 Plug 'adelarsq/vim-matchit'
-Plug 'mbbill/undotree'
 Plug 'godlygeek/tabular'
-Plug 'blueyed/vim-diminactive'
+Plug 'bronson/vim-trailing-whitespace'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'leshill/vim-json'
@@ -109,9 +107,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'itchyny/lightline.vim'
-Plug 'shinchu/lightline-gruvbox.vim'
-Plug 'gruvbox-community/gruvbox'
-Plug 'jonathanfilip/vim-lucius'
+Plug 'blueyed/vim-diminactive'
 Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
