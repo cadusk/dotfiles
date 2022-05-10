@@ -1,5 +1,5 @@
 
-if !has('nvim')
+if has('termguicolors') && !has('mac')
   set t_Co=256
   set termguicolors                   " use guifg/guibg instead of ctermfg/ctermbg in terminal
 endif
